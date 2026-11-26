@@ -1,0 +1,11 @@
+data
+.env
+.git
+**/__pycache__
+**/node_modules
+frontend/dist
+.taste-skill
+.impeccable
+tests
+data_test
+test_drive.ipynb

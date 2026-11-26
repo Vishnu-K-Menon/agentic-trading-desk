@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Four autonomous AI traders, each on a different model, competing against the S&P 500." />
+    <title>Agentic Trading Desk</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141414'/%3E%3Cpath d='M7 21l5-6 4 3 9-9' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script>
+      // Set the theme before first paint so the page never flashes the wrong one.
+      (function () {
+        var saved = localStorage.getItem("atd-theme");
+        var dark = saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#canvas">Skip to content</a>
+    <div class="shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="7" />
+            <path d="M7 21l5-6 4 3 9-9" />
+          </svg>
+          <div>
+            <div class="brand-name">Agentic Trading Desk</div>
+            <div class="brand-scope">Four AI traders, paper money</div>
+          </div>
+          <button class="icon-button menu-close" id="menu-close" aria-label="Close menu">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" /></svg>
+          </button>
+        </div>
+
+        <nav class="nav" aria-label="Main">
+          <a class="nav-item" href="#/" data-route="floor">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 13h12M4 13V8M8 13V3M12 13V6" /></svg>
+            Floor
+          </a>
+          <div class="nav-label">Traders</div>
+          <div id="nav-traders"></div>
+          <div class="nav-label">Owner</div>
+          <a class="nav-item" href="#/controls" data-route="controls">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h7M12 4.5h2M2 11.5h2M7 11.5h7" /><circle cx="10.5" cy="4.5" r="1.5" /><circle cx="5.5" cy="11.5" r="1.5" /></svg>
+            Controls
+          </a>
+        </nav>
+
+        <div class="sidebar-foot">
+          <dl class="floor-status" id="floor-status" aria-live="polite">
+            <div><dt>Market</dt><dd id="status-market">Connecting</dd></div>
+            <div><dt>Prices</dt><dd id="status-prices">&ndash;</dd></div>
+            <div><dt>Next round</dt><dd id="status-next">&ndash;</dd></div>
+          </dl>
+          <button class="ghost-button theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z" /></svg>
+            <span id="theme-label">Dark theme</span>
+          </button>
+        </div>
+      </aside>
+
+      <header class="topbar">
+        <button class="icon-button" id="menu-open" aria-label="Open menu" aria-controls="sidebar">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" /></svg>
+        </button>
+        <span class="topbar-title" id="topbar-title">Floor</span>
+      </header>
+
+      <main class="canvas" id="canvas" tabindex="-1"></main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
