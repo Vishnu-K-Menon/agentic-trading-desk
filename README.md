@@ -1,14 +1,4 @@
----
-title: Agentic Trading Desk
-emoji: 📈
-colorFrom: gray
-colorTo: gray
-sdk: docker
-app_port: 7860
-pinned: false
-license: mit
-short_description: Four AI agents trade against the S&P 500, with a risk desk
----
+
 
 # Agentic Trading Desk
 
